@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: Zuul-Server
+
+server:
+  port: 8080
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.services.eureka-service.credentials.uri:http://127.0.0.1:8761}/eureka/
+  instance:
+    preferIpAddress: true
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
+
+zuul:
+  routes:
+    record-count:
+      path: /record-count/**
+      serviceId: button-click-Web-App

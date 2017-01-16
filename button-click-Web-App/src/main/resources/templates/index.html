@@ -14,7 +14,7 @@
 			alert('Please enter username.');
 			return;
 		}
-		var url = "/record-data/" + userName;
+		var url = "record-count/" + userName;
 		var xmlHttp = new XMLHttpRequest();
 		xmlHttp.open("GET", url, false);
 		xmlHttp.send(null);

@@ -16,7 +16,7 @@ public class WebController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @RequestMapping(value = "/record-data/{userName}")
+    @RequestMapping(value = "/{userName}")
     public @ResponseBody String available(@PathVariable(value = "userName") final String userName) {
 
 	final String data = restTemplate.getForObject("http://button-count-writer/write/" + userName, String.class);
