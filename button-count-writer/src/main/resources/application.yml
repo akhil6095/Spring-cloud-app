@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: button-count-writer
+
+server:
+  port: 7001
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.services.eureka-service.credentials.uri:http://127.0.0.1:8761}/eureka/
+  instance:
+    preferIpAddress: true
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
+ 
+recorder:
+  ribbon:
+    eureka:
+      enabled: true
+    DeploymentContextBasedVipAddresses: button-count-recorder
+    NIWSServerListClassName: com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
+    ServerListRefreshInterval: 15000

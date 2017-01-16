@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+
+<script th:inline="javascript">
+	/*<![CDATA[*/
+
+	function validateAndRecordValue() {
+
+		var userName = document.getElementById("name").value;
+
+		if (userName === null || userName.length == 0) {
+			alert('Please enter username.');
+			return;
+		}
+		var url = "/record-data/" + userName;
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", url, false);
+		xmlHttp.send(null);
+		var response = xmlHttp.responseText;
+		if (response !== null && response.length > 0) {
+			var parsedResponse = JSON.parse(response);
+			var span = document.getElementById("response");
+			span.textContent = parsedResponse.count;
+		}
+
+	}
+	/*]]>*/
+</script>
+</head>
+<body>
+
+
+	<header>
+		<span> Spring Cloud Button Click Demo App</span>
+	</header>
+
+	<section>
+
+		<div>
+			<label>Enter name: </label> <input type="text" id="name"
+				placeholder="Enter Name" />
+			<button type="button" id="submit" onclick="validateAndRecordValue();">Count</button>
+		</div>
+
+
+		<div>
+			<h1>
+				<span id="response">0</span>
+			</h1>
+		</div>
+
+	</section>
+
+</body>
+</html>

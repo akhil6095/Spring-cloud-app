@@ -11,13 +11,13 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<h2.version>1.4.187</h2.version>
 	</properties>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.2.RELEASE</version>
-		<relativePath />
 	</parent>
 
 	<dependencyManagement>
@@ -43,8 +43,8 @@
 	<modules>
 		<module>Spring-Eureka</module>
 		<module>Spring-Zuul</module>
-		<module>Twitter-feed-service</module>
-		<module>Twitter-feed-processor</module>
-		<module>Twitter-Web-App</module>
+		<module>button-click-Web-App</module>
+		<module>button-count-writer</module>
+		<module>button-count-recorder</module>
 	</modules>
 </project>
