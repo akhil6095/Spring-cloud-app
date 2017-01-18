@@ -34,7 +34,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.apollo.web.Application</mainClass>
+					<mainClass>com.apollo.web.WebApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
