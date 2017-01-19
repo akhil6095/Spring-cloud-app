@@ -5,6 +5,8 @@ A hypothetical web app which captures username and record button click count aga
 - Java 8
 - Maven 3.3.9
 - MongoDB 3.2.9
+- Docker 1.10.3
+- Docker-Compose 1.8.1
 
 ##Services details
 
@@ -19,6 +21,16 @@ A hypothetical web app which captures username and record button click count aga
 
 # How to run
 Clone project from [here](https://github.com/akhil6095/Spring-cloud-app)
+
+Note: Please update docker-compose file to map volume for mongodb files 
+
+# How to run (Below command will create a single instances of all the service using docker-compose)
+
+- Move to project directory.
+- mvn clean package
+- docker-compose up -d
+
+# If you want to create multiple instances of services then
 
 - Move to project directory.
 - mvn clean package
@@ -41,5 +53,4 @@ Clone project from [here](https://github.com/akhil6095/Spring-cloud-app)
 
 Now open Eurka page to see all the registered service by using url : localhost:8761.
 Open localhost:8080/record-count to open web application and enter your username and click on count button to record click count, open console logs to see the request served by various instances.
-
 

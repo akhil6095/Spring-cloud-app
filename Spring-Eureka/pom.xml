@@ -33,6 +33,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<mainClass>com.apollo.eureka.EurekaApplication</mainClass>
+					<finalName>eureka</finalName>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -34,6 +34,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<mainClass>com.apollo.recorder.RecorderApplication</mainClass>
+					<finalName>button-count-recorder</finalName>
 				</configuration>
 			</plugin>
 		</plugins>

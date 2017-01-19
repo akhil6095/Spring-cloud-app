@@ -35,6 +35,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<mainClass>com.apollo.web.WebApplication</mainClass>
+					<finalName>button-click-web-app</finalName>
 				</configuration>
 			</plugin>
 		</plugins>

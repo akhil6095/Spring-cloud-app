@@ -34,6 +34,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<mainClass>com.apollo.writer.WriterApplication</mainClass>
+					<finalName>button-count-writer</finalName>
 				</configuration>
 			</plugin>
 		</plugins>
