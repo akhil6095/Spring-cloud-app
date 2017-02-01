@@ -34,7 +34,32 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<mainClass>com.apollo.recorder.RecorderApplication</mainClass>
-					<finalName>button-count-recorder</finalName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.13</version>
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<imageName>recorder</imageName>
+					<baseImage>java:8-jre</baseImage>
+					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar", "-Xms64m -Xmx128m ", "--vcap.services.eureka-service.credentials.uri=http://eureka:8761" ,"--spring.data.mongodb.host=mongodb"]</entryPoint>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
 				</configuration>
 			</plugin>
 		</plugins>

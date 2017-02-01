@@ -1,41 +1,37 @@
 version: '2'
 services:
   eureka:
-    build:
-      context: ./Spring-Eureka/
+    image: eureka
+    container_name: eureka
     ports: 
       - "8761:8761"
       
   zuul:
-    build:
-      context: ./Spring-Zuul
+    image: zuul
+    container_name: zuul
     ports:
-      - "8080:8080"
+      - "8080"
     depends_on:
       - eureka
     
   webapp:
-    build: 
-      context: ./button-click-Web-App
+    image: web-app
     ports:
-      - "6001:6001"
+      - "6001"
     depends_on:
       - eureka
-      
   
   writer:
-    build:
-      context: ./button-count-writer
+    image: writer
     ports:
-      - "7001:7001"
+      - "7001"
     depends_on:
       - eureka
    
   recorder:
-    build:
-      context: ./button-count-recorder
+    image: recorder
     ports:
-      - "9001:9001"
+      - "9001"
     depends_on:
       - eureka
       - mongodb

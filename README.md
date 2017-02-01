@@ -19,9 +19,6 @@ A hypothetical web app which captures username and record button click count aga
 # Architecture diagram
 ![Spring-cloud-App.jpeg](https://www.dropbox.com/s/9udbcv3nmhvzifh/Spring-cloud-App.jpeg?dl=0&raw=1)
 
-# How to run
-Clone project from [here](https://github.com/akhil6095/Spring-cloud-app)
-
 Note: Please update docker-compose file to map volume for mongodb files 
 
 # How to run (Below command will create a single instances of all the service using docker-compose)
@@ -53,4 +50,5 @@ Note: Please update docker-compose file to map volume for mongodb files
 
 Now open Eurka page to see all the registered service by using url : localhost:8761.
 Open localhost:8080/record-count to open web application and enter your username and click on count button to record click count, open console logs to see the request served by various instances.
+
 
