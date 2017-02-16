@@ -1,35 +1,35 @@
 version: '2'
 services:
   eureka:
-    image: eureka
+    image: akhil6095/eureka
     container_name: eureka
     ports: 
       - "8761:8761"
       
   zuul:
-    image: zuul
+    image: akhil6095/zuul
     container_name: zuul
     ports:
-      - "8080"
+      - "8080:8080"
     depends_on:
       - eureka
     
   webapp:
-    image: web-app
+    image: akhil6095/web-app
     ports:
       - "6001"
     depends_on:
       - eureka
   
   writer:
-    image: writer
+    image: akhil6095/writer
     ports:
       - "7001"
     depends_on:
       - eureka
    
   recorder:
-    image: recorder
+    image: akhil6095/recorder
     ports:
       - "9001"
     depends_on:

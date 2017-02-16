@@ -1,5 +1,7 @@
 package com.apollo.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,9 +19,11 @@ public class WebController {
     private RestTemplate restTemplate;
 
     @RequestMapping(value = "/{userName}")
-    public @ResponseBody String available(@PathVariable(value = "userName") final String userName) {
-	final String data = restTemplate.getForObject("http://button-count-writer/write/" + userName, String.class);
-	return data;
+    public @ResponseBody String available(@PathVariable(value = "userName") final String userName,
+	    final HttpServletRequest request) {
+	System.out.println(String.format("The request is served by web app with address : %s:%s for user : %s",
+		request.getLocalAddr(), request.getLocalPort(), userName));
+	return restTemplate.getForObject("http://button-count-writer/write/" + userName, String.class);
     }
 
     @RequestMapping(value = "/")

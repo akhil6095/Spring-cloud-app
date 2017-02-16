@@ -48,10 +48,8 @@
 						<goals>
 							<goal>build</goal>
 						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<imageName>web-app</imageName>
+						<configuration>
+					<imageName>akhil6095/web-app</imageName>
 					<baseImage>java:8-jre</baseImage>
 					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar", "-Xms64m -Xmx128m" , "--vcap.services.eureka-service.credentials.uri=http://eureka:8761"]</entryPoint>
 					<resources>
@@ -61,7 +59,24 @@
 							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
+					<forceTags>true</forceTags>
+					<imageTags>
+						<imageTag>latest</imageTag>
+					</imageTags>
 				</configuration>
+					</execution>
+					<execution>
+						<id>push-image</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>push</goal>
+						</goals>
+						<configuration>
+							<useConfigFile>true</useConfigFile>
+							<imageName>akhil6095/web-app</imageName>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

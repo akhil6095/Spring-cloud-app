@@ -46,20 +46,35 @@
 						<goals>
 							<goal>build</goal>
 						</goals>
+						<configuration>
+							<imageName>akhil6095/eureka</imageName>
+							<baseImage>java:8-jre</baseImage>
+							<entryPoint>["java", "-jar", "/${project.build.finalName}.jar", "-Xms64m -Xmx128m "]</entryPoint>
+							<resources>
+								<resource>
+									<targetPath>/</targetPath>
+									<directory>${project.build.directory}</directory>
+									<include>${project.build.finalName}.jar</include>
+								</resource>
+							</resources>
+							<forceTags>true</forceTags>
+							<imageTags>
+								<imageTag>latest</imageTag>
+							</imageTags>
+						</configuration>
+					</execution>
+					<execution>
+						<id>push-image</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>push</goal>
+						</goals>
+						<configuration>
+							<useConfigFile>true</useConfigFile>
+							<imageName>akhil6095/eureka</imageName>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<imageName>eureka</imageName>
-					<baseImage>java:8-jre</baseImage>
-					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar", "-Xms64m -Xmx128m "]</entryPoint>
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
