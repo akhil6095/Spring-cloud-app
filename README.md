@@ -29,26 +29,12 @@ Note: Please update docker-compose file to map volume for mongodb files
 
 # If you want to create multiple instances of services then
 
-- Move to project directory.
-- mvn clean package
-- Start Eureka, move to Spring-Eureka folder and start it using below command
-    `mvn spring-boot:run -Drun.jvmArguments="-Xms64m -Xmx128m"  &`
-- Start Zuul, mode to Spring-Zuul folder and start it using below command
-    `mvn spring-boot:run -Drun.jvmArguments="-Xms64m -Xmx128m"  &`
-- Start Button-count-recorder service, move to button-count-recoder folder and use below commands to start multiple instances of recorder service.
-    `SERVER_PORT=9001 mvn spring-boot:run -Drun.jvmArguments="-Xms64m -Xmx128m"  &`
-    `SERVER_PORT=9002 mvn spring-boot:run -Drun.jvmArguments="-Xms64m -Xmx128m"  &`
-    `SERVER_PORT=9003 mvn spring-boot:run -Drun.jvmArguments="-Xms64m -Xmx128m"  &`
-- Start Button-count-writer service, move to button-count-writer folder and use below commands to start multiple instances of writer service.
-    `SERVER_PORT=7001 mvn spring-boot:run -Drun.jvmArguments="-Xms64m -Xmx128m"  &`
-    `SERVER_PORT=7002 mvn spring-boot:run -Drun.jvmArguments="-Xms64m -Xmx128m"  &`
-    `SERVER_PORT=7003 mvn spring-boot:run -Drun.jvmArguments="-Xms64m -Xmx128m"  &`
-- Start Button-click-Web-App, move to Button-click-Web-App folder and use below commands to start multiple instances of writer service.
-    `SERVER_PORT=6001 mvn spring-boot:run -Drun.jvmArguments="-Xms64m -Xmx128m"  &`
-    `SERVER_PORT=6002 mvn spring-boot:run -Drun.jvmArguments="-Xms64m -Xmx128m"  &`
-    `SERVER_PORT=6003 mvn spring-boot:run -Drun.jvmArguments="-Xms64m -Xmx128m"  &`
+- docker-compose scale serviceName={no. Of Instances}
+For example, if you want to scale writer service then use
+- docker-compose scale writer={2}
 
 Now open Eurka page to see all the registered service by using url : localhost:8761.
+
 Open localhost:8080/record-count to open web application and enter your username and click on count button to record click count, open console logs to see the request served by various instances.
 
 
