@@ -31,7 +31,7 @@ Note: Please update docker-compose file to map volume for mongodb files
 
 - docker-compose scale serviceName={no. Of Instances}
 For example, if you want to scale writer service then use
-- docker-compose scale writer={2}
+- docker-compose scale writer=2
 
 Now open Eurka page to see all the registered service by using url : localhost:8761.
 
