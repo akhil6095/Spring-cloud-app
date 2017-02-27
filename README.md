@@ -10,11 +10,11 @@ A hypothetical web app which captures username and record button click count aga
 
 ##Services details
 
-•Spring-Eureka – This service act as service discovery and is responsible for keeping a registry of all services.
-•Spring-Zuul – This service act as a API gateway or proxy and forward incoming request to the designated services.
-•Button-click-web-app – This is the client facing web application built using Spring web and thymeleaf, this service  registers with Eureka and can be deployed in cluster for client side load balancing.
-•Button-click-writer – This service is used to capture user button click event and pass it to recorder service to store it in DB, this service registers with Eureka and can be deployed in cluster for client side load balancing.
-•Button-click-recorder – This service is used to record user click event and save it to MongoDB, this service registers with Eureka and can be deployed in cluster for client side load balancing.
+- Spring-Eureka – This service act as service discovery and is responsible for keeping a registry of all services.
+- Spring-Zuul – This service act as a API gateway or proxy and forward incoming request to the designated services.
+- Button-click-web-app – This is the client facing web application built using Spring web and thymeleaf, this service   registers with Eureka and can be deployed in cluster for client side load balancing.
+- Button-click-writer – This service is used to capture user button click event and pass it to recorder service to store it in DB, this service registers with Eureka and can be deployed in cluster for client side load balancing.
+- Button-click-recorder – This service is used to record user click event and save it to MongoDB, this service registers with Eureka and can be deployed in cluster for client side load balancing.
 
 # Architecture diagram
 ![Spring-cloud-App.jpeg](https://www.dropbox.com/s/9udbcv3nmhvzifh/Spring-cloud-App.jpeg?dl=0&raw=1)
