@@ -60,7 +60,7 @@
 							</resources>
 							<forceTags>true</forceTags>
 							<imageTags>
-								<imageTag>latest</imageTag>
+								<imageTag>${build.number}</imageTag>
 							</imageTags>
 						</configuration>
 					</execution>
