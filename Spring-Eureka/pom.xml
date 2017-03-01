@@ -47,7 +47,8 @@
 							<goal>build</goal>
 						</goals>
 						<configuration>
-							<imageName>akhil6095/eureka</imageName>
+							<serverId>docker-hub</serverId>
+							<imageName>127.0.0.1:8123/eureka</imageName>
 							<baseImage>java:8-jre</baseImage>
 							<entryPoint>["java", "-jar", "/${project.build.finalName}.jar", "-Xms64m -Xmx128m "]</entryPoint>
 							<resources>
@@ -71,7 +72,7 @@
 						</goals>
 						<configuration>
 							<useConfigFile>true</useConfigFile>
-							<imageName>akhil6095/eureka</imageName>
+							<imageName>127.0.0.1:8123/eureka</imageName>
 						</configuration>
 					</execution>
 				</executions>
