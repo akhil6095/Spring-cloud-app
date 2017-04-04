@@ -7,8 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.apollo.web.config.WriterClient;
 
 @Controller
 public class WebController {
@@ -16,14 +17,14 @@ public class WebController {
     private final String VIEW_NAME = "index";
 
     @Autowired
-    private RestTemplate restTemplate;
+    private WriterClient client;
 
     @RequestMapping(value = "/{userName}")
     public @ResponseBody String available(@PathVariable(value = "userName") final String userName,
 	    final HttpServletRequest request) {
 	System.out.println(String.format("The request is served by web app with address : %s:%s for user : %s",
 		request.getLocalAddr(), request.getLocalPort(), userName));
-	return restTemplate.getForObject("http://button-count-writer/write/" + userName, String.class);
+	return client.writeObject(userName);
     }
 
     @RequestMapping(value = "/")

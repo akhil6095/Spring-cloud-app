@@ -3,12 +3,19 @@ spring:
     name: eureka
     
 server:
- port: 8761
+  port: 8761
  
 eureka:
- client:
-  registerWithEureka: false
-  fetchRegistry: false
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
   server:
-   waitTimeInMsWhenSyncEmpty: 0
+    waitTimeInMsWhenSyncEmpty: 0
+  healthcheck:
+    enabled:true
+  lease:
+    duration: 5  
       

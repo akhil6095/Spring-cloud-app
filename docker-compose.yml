@@ -1,13 +1,13 @@
 version: '2'
 services:
   eureka:
-    image: akhil6095/eureka
+    image: 127.0.0.1:8123/eureka:${BUILD_NUMBER}
     container_name: eureka
     ports: 
       - "8761:8761"
       
   zuul:
-    image: akhil6095/zuul
+    image: 127.0.0.1:8123/zuul:${BUILD_NUMBER}
     container_name: zuul
     ports:
       - "8080:8080"
@@ -15,21 +15,21 @@ services:
       - eureka
     
   webapp:
-    image: akhil6095/web-app
+    image: 127.0.0.1:8123/web-app:${BUILD_NUMBER}
     ports:
       - "6001"
     depends_on:
       - eureka
   
   writer:
-    image: akhil6095/writer
+    image: 127.0.0.1:8123/writer:${BUILD_NUMBER}
     ports:
       - "7001"
     depends_on:
       - eureka
    
   recorder:
-    image: akhil6095/recorder
+    image: 127.0.0.1:8123/recorder:${BUILD_NUMBER}
     ports:
       - "9001"
     depends_on:

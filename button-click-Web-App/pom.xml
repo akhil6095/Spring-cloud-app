@@ -19,12 +19,12 @@
 			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring4</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -49,22 +49,24 @@
 							<goal>build</goal>
 						</goals>
 						<configuration>
-					<serverId>docker-hub</serverId>
-					<imageName>127.0.0.1:8123/web-app</imageName>
-					<baseImage>java:8-jre</baseImage>
-					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar", "-Xms64m -Xmx128m" , "--vcap.services.eureka-service.credentials.uri=http://eureka:8761"]</entryPoint>
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
-					<forceTags>true</forceTags>
-					<imageTags>
-						<imageTag>${build.number}</imageTag>
-					</imageTags>
-				</configuration>
+							<serverId>docker-hub</serverId>
+							<imageName>127.0.0.1:8123/web-app</imageName>
+							<baseImage>java:8-jre</baseImage>
+							<entryPoint>["java", "-jar", "/${project.build.finalName}.jar",
+								"-Xms64m -Xmx128m" ,
+								"--vcap.services.eureka-service.credentials.uri=http://eureka:8761"]</entryPoint>
+							<resources>
+								<resource>
+									<targetPath>/</targetPath>
+									<directory>${project.build.directory}</directory>
+									<include>${project.build.finalName}.jar</include>
+								</resource>
+							</resources>
+							<forceTags>true</forceTags>
+							<imageTags>
+								<imageTag>${build.number}</imageTag>
+							</imageTags>
+						</configuration>
 					</execution>
 					<execution>
 						<id>push-image</id>
