@@ -7,6 +7,7 @@ A hypothetical web app which captures username and record button click count aga
 - MongoDB 3.2.9
 - Docker 1.10.3
 - Docker-Compose 1.8.1
+- Vagrant 
 
 ##Services details
 
@@ -24,11 +25,12 @@ Note: Please update docker-compose file to map volume for mongodb files
 # How to run (Below command will create a single instances of all the service using docker-compose)
 
 - Move to project directory.
-- mvn clean package
-- docker-compose up -d
+- vagrant up
 
 # If you want to create multiple instances of services then
 
+- vagrant ssh
+- cd Spring-cloud-app
 - docker-compose scale serviceName={no. Of Instances}
 For example, if you want to scale writer service then use
 - docker-compose scale writer=2
