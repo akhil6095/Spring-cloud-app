@@ -1,13 +1,13 @@
 version: '2'
 services:
   eureka:
-    image: eureka:${BUILD_NUMBER}
+    image: eureka
     container_name: eureka
     ports: 
       - "8761:8761"
       
   zuul:
-    image: zuul:${BUILD_NUMBER}
+    image: zuul
     container_name: zuul
     ports:
       - "8080:8080"
@@ -15,21 +15,21 @@ services:
       - eureka
     
   webapp:
-    image: web-app:${BUILD_NUMBER}
+    image: web-app
     ports:
       - "6001"
     depends_on:
       - eureka
   
   writer:
-    image: writer:${BUILD_NUMBER}
+    image: writer
     ports:
       - "7001"
     depends_on:
       - eureka
    
   recorder:
-    image: recorder:${BUILD_NUMBER}
+    image: recorder
     ports:
       - "9001"
     depends_on:
