@@ -1,13 +1,13 @@
 version: '2'
 services:
   eureka:
-    image: 127.0.0.1:8123/eureka:${BUILD_NUMBER}
+    image: eureka:${BUILD_NUMBER}
     container_name: eureka
     ports: 
       - "8761:8761"
       
   zuul:
-    image: 127.0.0.1:8123/zuul:${BUILD_NUMBER}
+    image: zuul:${BUILD_NUMBER}
     container_name: zuul
     ports:
       - "8080:8080"
@@ -15,21 +15,21 @@ services:
       - eureka
     
   webapp:
-    image: 127.0.0.1:8123/web-app:${BUILD_NUMBER}
+    image: web-app:${BUILD_NUMBER}
     ports:
       - "6001"
     depends_on:
       - eureka
   
   writer:
-    image: 127.0.0.1:8123/writer:${BUILD_NUMBER}
+    image: writer:${BUILD_NUMBER}
     ports:
       - "7001"
     depends_on:
       - eureka
    
   recorder:
-    image: 127.0.0.1:8123/recorder:${BUILD_NUMBER}
+    image: recorder:${BUILD_NUMBER}
     ports:
       - "9001"
     depends_on:
@@ -44,5 +44,5 @@ services:
     environment:
       TERM: xterm
     volumes:
-      - /home/akhil/data/mongo:/data/db
+      - /home/vagrant/data/mongo:/data/db
       
